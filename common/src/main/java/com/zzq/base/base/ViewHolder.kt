@@ -6,12 +6,7 @@ import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 
 open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private lateinit var viewIdArray: SparseArray<View>
-
-    init {
-        viewIdArray = SparseArray<View>()
-
-    }
+    private var viewIdArray: SparseArray<View> = SparseArray<View>()
 
     protected fun <T : View> getView(@IdRes viewId: Int): T {
         val view = itemView.findViewById<T>(viewId)
