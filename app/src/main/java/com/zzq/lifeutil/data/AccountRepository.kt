@@ -9,8 +9,9 @@ class AccountRepository private constructor(private val accountInfoDao: AccountI
     fun getAllTypeAccount(account: String, type: String) =
         accountInfoDao.getAccount(account, type)
 
-    fun addAccountInfo(accountInfo: AccountInfo) = accountInfoDao.addAccountInfo(accountInfo)
-
+    fun addAccountInfo(accountInfo: AccountInfo) {
+        accountInfoDao.addAccountInfo(accountInfo)
+    }
 
     companion object {
 

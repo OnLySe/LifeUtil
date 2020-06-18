@@ -8,12 +8,14 @@ import com.zzq.lifeutil.data.AccountInfo
 import com.zzq.lifeutil.data.AccountRepository
 
 class LifeViewModel internal constructor(
-    accountRepo: AccountRepository,
+   val accountRepo: AccountRepository,
     savedStateHandle:SavedStateHandle
 ) : ViewModel() {
 
     /*** 获取所有账号和历史*/
     val accounts: LiveData<List<AccountInfo>> = accountRepo.getAllCounts()
 
-
+    fun addAccountInfo(accountInfo: AccountInfo) {
+        accountRepo.addAccountInfo(accountInfo)
+    }
 }

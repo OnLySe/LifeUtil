@@ -11,8 +11,7 @@ class LifeViewModelFactory(
     private val repository: AccountRepository,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
-) :
-    AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
     override fun <T : ViewModel?> create(
         key: String,
         modelClass: Class<T>,
