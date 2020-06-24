@@ -126,3 +126,4 @@
 -dontwarn androidx.appcompat.**
 
 # 项目内部使用
+-keep class com.zzq.common.bean.**{*;}

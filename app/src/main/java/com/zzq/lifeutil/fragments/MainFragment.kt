@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.zzq.base.base.BaseFragment
-import com.zzq.base.util.DensityUtil
-import com.zzq.base.widget.RecycleViewDivider
+import com.zzq.common.base.BaseFragment
+import com.zzq.common.util.DensityUtil
+import com.zzq.common.widget.RecycleViewDivider
 import com.zzq.lifeutil.R
 import com.zzq.lifeutil.adapter.AccountInfoAdapter
 import com.zzq.lifeutil.data.AccountInfo
