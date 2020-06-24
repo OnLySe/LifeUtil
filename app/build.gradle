@@ -17,29 +17,85 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions 'version'
+    productFlavors {
+        demo {
+            dimension 'version'
+            applicationIdSuffix '.demo'
+            versionNameSuffix '-demo'
+        }
+    }
+
+    signingConfigs  {
+        debug {
+            def debugProperties = file('../keystore/debug.properties')
+            if (debugProperties.canRead()) {
+                Properties properties = new Properties()
+                properties.load(new FileInputStream(debugProperties))
+                storeFile = file(properties['STORE_FILE'])
+                storePassword = properties['STORE_PASSWORD']
+                keyAlias = properties['KEY_ALIAS']
+                keyPassword = properties['KEY_PASSWORD']
+            } else {
+                println '签名文件丢失，查看debug.properties与zzq_debug.jks'
+            }
+        }
+
+        release {
+            def releaseProperties = file('../keystore/release.properties')
+            if (releaseProperties.canRead()) {
+                Properties properties = new Properties()
+                properties.load(new FileInputStream(releaseProperties))
+                storeFile = file(properties['STORE_FILE'])
+                storePassword = properties['STORE_PASSWORD']
+                keyAlias = properties['KEY_ALIAS']
+                keyPassword = properties['KEY_PASSWORD']
+            }else {
+                println '签名文件丢失，查看release.properties与zzq.jks'
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationIdSuffix '.release'
+            versionNameSuffix '-release'
         }
+
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+            signingConfig signingConfigs.debug
+        }
+
+        /*beta {
+            initWith debug
+            applicationIdSuffix ".beta"
+            //指定使用release 这种buildType
+            matchingFallbacks = ['debug']
+        }*/
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
         jvmTarget = "1.8"
     }
 
-    /*viewBinding {
+    dataBinding {
         enabled = true
-    }*/
-
-    buildFeatures{
-        viewBinding = true
     }
+
+    /*buildFeatures{
+        viewBinding = true
+    }*/
 }
 
 dependencies {
@@ -54,6 +110,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation project(path: ':common')
+//    implementation project(path: ':common', configuration: 'default')
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -71,7 +129,7 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.5'
     //##############################################################################################
     // ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'

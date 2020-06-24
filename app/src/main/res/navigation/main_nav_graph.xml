@@ -9,5 +9,18 @@
         android:id="@+id/mainFragment"
         tools:layout="@layout/fragment_main"
         android:name="com.zzq.lifeutil.fragments.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_appInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/appInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appInfoFragment"
+        android:name="com.zzq.lifeutil.fragments.AppInfoFragment"
+        tools:layout="@layout/fragment_app_info"
+        android:label="AppInfoFragment" />
 </navigation>

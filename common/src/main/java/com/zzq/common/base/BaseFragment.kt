@@ -53,7 +53,6 @@ abstract class BaseFragment : SimpleImmersionFragment() {
             toolbarId?.let {
                 defaultToolbar  = findViewById(it)
                 setToolbar(defaultToolbar!!)
-
             }
             initView(this)
         }

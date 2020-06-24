@@ -2,4 +2,10 @@
     <string name="app_name">LifeUtil</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+
+    <string name="tv_title_right_app_info">关于</string>
+    <!--title 开始-->
+    <string name="title_app_info">应用信息</string>
+
+    <!--title 结束-->
 </resources>

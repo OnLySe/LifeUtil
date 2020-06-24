@@ -29,7 +29,7 @@ class LifeRetrofit {
                     return chain.proceed(request)
                 }
 
-            }).addInterceptor(LogPrintIntercepter())
+            }).addInterceptor(LogPrintInterceptor())
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)

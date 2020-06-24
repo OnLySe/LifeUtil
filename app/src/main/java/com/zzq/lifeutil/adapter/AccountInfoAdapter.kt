@@ -1,10 +1,13 @@
 package com.zzq.lifeutil.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.zzq.lifeutil.R
 import com.zzq.lifeutil.data.AccountInfo
 import com.zzq.lifeutil.databinding.ItemAccountInfoBinding
 
@@ -13,8 +16,20 @@ class AccountInfoAdapter :
 
     class AccountInfoHolder(private val binding: ItemAccountInfoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.setOnClickListener { view ->
+                binding.accountInfo?.let { navigateToDetail(it, view) }
+            }
+        }
+
         fun bindData(data: AccountInfo) {
-            binding.ivItemAccount.text = data.toString()
+            binding.accountInfo = data
+            binding.executePendingBindings()
+        }
+
+        private fun navigateToDetail(data: AccountInfo, view: View) {
+            view.findNavController().navigate(R.id.action_mainFragment_to_appInfoFragment)
         }
     }
 

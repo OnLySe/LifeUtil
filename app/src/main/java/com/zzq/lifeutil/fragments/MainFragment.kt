@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.zzq.common.base.BaseFragment
+import com.zzq.common.interfaces.ClickProxy
 import com.zzq.common.util.DensityUtil
 import com.zzq.common.widget.RecycleViewDivider
 import com.zzq.lifeutil.R
@@ -42,6 +43,12 @@ class MainFragment : BaseFragment() {
         rvMain = view.findViewById(R.id.rv_main)
         val tvTitle: TextView = view.findViewById(R.id.tv_title)
         tvTitle.text = "Main"
+        val tvTitleRight: TextView = view.findViewById(R.id.tv_title_right)
+        tvTitleRight.visibility = View.VISIBLE
+        tvTitleRight.text = getString(R.string.tv_title_right_app_info)
+        tvTitleRight.setOnClickListener(ClickProxy(View.OnClickListener {
+            navigate(R.id.action_mainFragment_to_appInfoFragment)
+        }))
         val fabMain = view.findViewById<FloatingActionButton>(R.id.fab_main)
         fabMain.setOnClickListener {
             index++
@@ -72,8 +79,8 @@ class MainFragment : BaseFragment() {
         )
         rvMain.layoutManager = LinearLayoutManager(requireContext())
         val defaultItemAnimator = DefaultItemAnimator()
-        defaultItemAnimator.addDuration = 300
-        defaultItemAnimator.removeDuration = 300
+        defaultItemAnimator.addDuration = 200
+        defaultItemAnimator.removeDuration = 200
         rvMain.itemAnimator = defaultItemAnimator
         rvMain.adapter = adapter
         subscribeUi()
