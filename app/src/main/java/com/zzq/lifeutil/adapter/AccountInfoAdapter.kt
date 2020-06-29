@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.launcher.ARouter
 import com.zzq.lifeutil.R
 import com.zzq.lifeutil.data.AccountInfo
 import com.zzq.lifeutil.databinding.ItemAccountInfoBinding
@@ -29,7 +30,8 @@ class AccountInfoAdapter :
         }
 
         private fun navigateToDetail(data: AccountInfo, view: View) {
-            view.findNavController().navigate(R.id.action_mainFragment_to_appInfoFragment)
+            ARouter.getInstance().build("/picture/MainActivity").navigation()
+//            view.findNavController().navigate(R.id.action_mainFragment_to_appInfoFragment)
         }
     }
 

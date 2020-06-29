@@ -1,0 +1,19 @@
+ext {
+    isApplication = false
+    isPictureApplication = false
+    isNewsApplication = false
+
+    android = [
+            compileSdkVersion: 29,
+            targetSdkVersion : 29,
+            minSdkVersion    : 23,
+            buildToolsVersion: "29.0.0",
+            versionCode      : 1,
+            versionName      : "1.0.0"
+
+    ]
+
+    version = [
+            arouterVersion = "1.0.0"
+    ]
+}
