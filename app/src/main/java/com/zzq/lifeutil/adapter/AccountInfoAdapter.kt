@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.launcher.ARouter
+import com.zzq.library.arounter.RouterConstant
 import com.zzq.lifeutil.R
 import com.zzq.lifeutil.data.AccountInfo
 import com.zzq.lifeutil.databinding.ItemAccountInfoBinding
@@ -20,7 +21,7 @@ class AccountInfoAdapter :
 
         init {
             binding.setOnClickListener { view ->
-                binding.accountInfo?.let { navigateToDetail(it, view) }
+                binding.accountInfo?.let { navigateToDetail(it, view, adapterPosition) }
             }
         }
 
@@ -29,8 +30,12 @@ class AccountInfoAdapter :
             binding.executePendingBindings()
         }
 
-        private fun navigateToDetail(data: AccountInfo, view: View) {
-            ARouter.getInstance().build("/picture/MainActivity").navigation()
+        private fun navigateToDetail(data: AccountInfo, view: View, position: Int) {
+            if (position % 2 == 0) {
+                ARouter.getInstance().build(RouterConstant.Picture_Activity_Main).navigation()
+            } else {
+                ARouter.getInstance().build(RouterConstant.News_Activity_Main).navigation()
+            }
 //            view.findNavController().navigate(R.id.action_mainFragment_to_appInfoFragment)
         }
     }
