@@ -3,6 +3,8 @@
     package="com.zzq.life.picture">
 
     <application>
-        <activity android:name=".PictureMainActivity" />
+        <activity android:name=".view.GankPictureActivity" />
+        <activity android:name=".view.PictureMainActivity" />
     </application>
+
 </manifest>

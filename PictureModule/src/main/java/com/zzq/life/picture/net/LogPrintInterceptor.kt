@@ -1,4 +1,4 @@
-package com.zzq.lifeutil.net
+package com.zzq.life.picture.net
 
 import android.util.Log
 import okhttp3.Interceptor

@@ -1,5 +1,6 @@
-package com.zzq.lifeutil.net
+package com.zzq.life.picture.net
 
+import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -7,16 +8,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class LifeRetrofit {
+object NetManager {
 
     private val GANK_URL = "https://gank.io/api/v2/"
     private lateinit var gankRetrofit: Retrofit
 
-    lateinit var gankApi: GankApi
-        private set
-
-    init {
+    private val api by lazy {
         initGankApi()
+        createGankApi()
     }
 
     fun initGankApi() {
@@ -29,7 +28,8 @@ class LifeRetrofit {
                     return chain.proceed(request)
                 }
 
-            }).addInterceptor(LogPrintInterceptor())
+            })
+            .addInterceptor(LogPrintInterceptor())
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
@@ -39,8 +39,14 @@ class LifeRetrofit {
             .baseUrl(GANK_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        gankApi = gankRetrofit.create(GankApi::class.java)
+
     }
 
+    private fun createGankApi(): GankApi {
+        return gankRetrofit.create(GankApi::class.java)
+    }
 
+    fun getGankApi(): GankApi {
+        return api
+    }
 }

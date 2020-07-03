@@ -45,12 +45,58 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.3.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.core:core-ktx:1.3.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    api "com.google.android.material:material:$versions.material"
+    //CardView
+    api "androidx.cardview:cardview:$versions.cardview"
+    //Recyclerview
+    api "androidx.recyclerview:recyclerview:$versions.recyclerview"
+    //SwipeRefreshLayout
+    api "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+    //ConstraintLayout
+    api "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    //gson
+    api "com.google.code.gson:gson:$versions.gson"
+    // ViewModel and LiveData
+    api "androidx.lifecycle:lifecycle-extensions:$versions.viewmodel"
+    api "androidx.lifecycle:lifecycle-runtime:$versions.viewmodel"
+    //Retrofit
+    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    api "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    api "com.squareup.okhttp3:okhttp:$versions.okhttp"
+
+    api "com.gyf.immersionbar:immersionbar:$versions.immersionbar"
+    api "com.gyf.immersionbar:immersionbar-components:$versions.immersionbar"
+    api "me.jessyan:autosize:$versions.autosize"
+    //glide
+    api "com.github.bumptech.glide:glide:$versions.glide"
+    //分页
+    api "androidx.paging:paging-runtime:$versions.paging"
+
+    api "androidx.fragment:fragment-ktx:$versions.fragmentKtx"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleKtx"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleKtx"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleKtx"
+
+
+    api "androidx.navigation:navigation-runtime-ktx:$versions.navigation"
+    api "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    api "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+
+    //Room
+    api "androidx.room:room-runtime:$versions.room"
+    api "androidx.room:room-ktx:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    // Test Room helpers
+    testImplementation "androidx.room:room-testing:$versions.room"
 
     api 'com.alibaba:arouter-api:1.4.1'
+
+    api project(path: ':common')
 }

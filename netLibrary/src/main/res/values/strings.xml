@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--网络请求错误码  start-->
+    <string name="network_error">网络错误</string>
+    <string name="parse_error">解析错误</string>
+    <string name="connect_fail_error">连接失败</string>
+    <string name="Certificate_validation_failed_error">证书验证失败</string>
+    <string name="connection_timeout_error">连接超时</string>
+    <string name="unauthorized_error">用户不存在或者密码错误</string>
+    <string name="unknown_error">未知错误</string>
+
+
+    <!--网络请求错误码  end-->
+</resources>
